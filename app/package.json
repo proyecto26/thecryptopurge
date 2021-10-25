@@ -2,7 +2,7 @@
   "name": "thecryptopurge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://proyecto26.github.io/TheCryptoPurge",
+  "homepage": "https://proyecto26.github.io/thecryptopurge",
   "dependencies": {
     "@craco/craco": "6.4.0",
     "lodash": "4.17.21",
@@ -20,6 +20,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
