@@ -2,6 +2,7 @@
   "name": "thecryptopurge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://proyecto26.github.io/TheCryptoPurge",
   "dependencies": {
     "@craco/craco": "6.4.0",
     "lodash": "4.17.21",
