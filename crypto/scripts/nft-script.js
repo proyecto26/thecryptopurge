@@ -1,9 +1,8 @@
-const { hexStripZeros } = require('@ethersproject/bytes');
-const { ethers } = require("hardhat");
+const { ethers } = require('hardhat');
 
 const main = async () => {
   // Compiling our Smart Contract.
-  const contractFactory = await ethers.getContractFactory("TheCryptoPurgeNFT");
+  const contractFactory = await ethers.getContractFactory('TheCryptoPurgeNFT');
 
   // Deploy our contract to the local blockchain.
   const contract = await contractFactory.deploy();
@@ -11,7 +10,7 @@ const main = async () => {
   // Await for the contract to be mined.
   await contract.deployed();
 
-  console.log("Contract deployed:", contract.address);
+  console.log('Contract deployed:', contract.address);
 
   // Mint a NFT.
   const txn = await contract.makeNFT();

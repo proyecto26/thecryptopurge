@@ -9,8 +9,8 @@ export default withRouter(() => {
   useGame(gameConfig, parentEl);
 
   return (
-    <div className="container">
-      <div ref={parentEl} className="gameContainer" />
-    </div>
+    <section className="min-h-screen flex flex-col">
+      <div ref={parentEl} className="flex-1" />
+    </section>
   );
 });

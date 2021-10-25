@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Game is ERC721 {
+contract TheCryptoPurgeGame is ERC721 {
   uint256 numberOfRounds;
 
   struct CharacterAttributes {
@@ -22,10 +22,10 @@ contract Game is ERC721 {
   CharacterAttributes[] characters;
 
   constructor(
-    string[] memory characterNames,
-    string[] memory characterImages,
-    uint[] memory characterHealths,
-    uint[] memory characterAttacks
+  //  string[] memory characterNames,
+  //  string[] memory characterImages,
+  //  uint[] memory characterHealths,
+  //  uint[] memory characterAttacks
   ) ERC721("TheCryptoPurge", "ePING")
   {
     console.log("Game initialized :)");

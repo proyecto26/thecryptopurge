@@ -20,6 +20,8 @@ cd crypto
 npx hardhat compile
 npx hardhat test
 npx hardhat run scripts/nft-script.js
+npx hardhat node
+npx hardhat run scripts/portal-script.js --network localhost
 ```
 
 ## Contributing ✨
