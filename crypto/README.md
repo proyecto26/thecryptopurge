@@ -13,10 +13,3 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
-
-## Custom Commands
-
--  Run custom scripts
-```sh
-npx hardhat run scripts/chat-test.js
-```
