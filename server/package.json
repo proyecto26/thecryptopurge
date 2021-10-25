@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server to support realtime games with Phaser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proyecto26/Phaser-Workshop.git"
+  },
+  "keywords": [
+    "realtime-games",
+    "phaser",
+    "socket.io"
+  ],
+  "author": "Juan David Nicholls Cardona",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/proyecto26/Phaser-Workshop/issues"
+  },
+  "homepage": "https://github.com/proyecto26/Phaser-Workshop#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "lodash": "^4.17.4",
+    "socket.io": "^4.3.1"
+  }
+}
