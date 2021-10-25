@@ -10,7 +10,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/thecryptopurge">
       <Switch>
         <Route path="/home" component={Home} exact />
         <Route path="/game" component={Game} exact />
