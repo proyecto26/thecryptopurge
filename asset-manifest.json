@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TheCryptoPurge/static/css/main.860c3c72.chunk.css",
-    "main.js": "/TheCryptoPurge/static/js/main.4bc03f15.chunk.js",
-    "main.js.map": "/TheCryptoPurge/static/js/main.4bc03f15.chunk.js.map",
-    "runtime-main.js": "/TheCryptoPurge/static/js/runtime-main.ae0d5b0d.js",
-    "runtime-main.js.map": "/TheCryptoPurge/static/js/runtime-main.ae0d5b0d.js.map",
-    "static/js/2.a24cd4e7.chunk.js": "/TheCryptoPurge/static/js/2.a24cd4e7.chunk.js",
-    "static/js/2.a24cd4e7.chunk.js.map": "/TheCryptoPurge/static/js/2.a24cd4e7.chunk.js.map",
-    "static/js/3.155a9372.chunk.js": "/TheCryptoPurge/static/js/3.155a9372.chunk.js",
-    "static/js/3.155a9372.chunk.js.map": "/TheCryptoPurge/static/js/3.155a9372.chunk.js.map",
-    "index.html": "/TheCryptoPurge/index.html",
-    "static/css/main.860c3c72.chunk.css.map": "/TheCryptoPurge/static/css/main.860c3c72.chunk.css.map",
-    "static/js/2.a24cd4e7.chunk.js.LICENSE.txt": "/TheCryptoPurge/static/js/2.a24cd4e7.chunk.js.LICENSE.txt"
+    "main.css": "/thecryptopurge/static/css/main.860c3c72.chunk.css",
+    "main.js": "/thecryptopurge/static/js/main.0e053794.chunk.js",
+    "main.js.map": "/thecryptopurge/static/js/main.0e053794.chunk.js.map",
+    "runtime-main.js": "/thecryptopurge/static/js/runtime-main.520f24ec.js",
+    "runtime-main.js.map": "/thecryptopurge/static/js/runtime-main.520f24ec.js.map",
+    "static/js/2.a24cd4e7.chunk.js": "/thecryptopurge/static/js/2.a24cd4e7.chunk.js",
+    "static/js/2.a24cd4e7.chunk.js.map": "/thecryptopurge/static/js/2.a24cd4e7.chunk.js.map",
+    "static/js/3.155a9372.chunk.js": "/thecryptopurge/static/js/3.155a9372.chunk.js",
+    "static/js/3.155a9372.chunk.js.map": "/thecryptopurge/static/js/3.155a9372.chunk.js.map",
+    "index.html": "/thecryptopurge/index.html",
+    "static/css/main.860c3c72.chunk.css.map": "/thecryptopurge/static/css/main.860c3c72.chunk.css.map",
+    "static/js/2.a24cd4e7.chunk.js.LICENSE.txt": "/thecryptopurge/static/js/2.a24cd4e7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ae0d5b0d.js",
+    "static/js/runtime-main.520f24ec.js",
     "static/js/2.a24cd4e7.chunk.js",
     "static/css/main.860c3c72.chunk.css",
-    "static/js/main.4bc03f15.chunk.js"
+    "static/js/main.0e053794.chunk.js"
   ]
 }
