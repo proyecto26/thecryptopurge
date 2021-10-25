@@ -1,20 +1,17 @@
-# Phaser-Workshop Client to Server
-A basic real time interaction between the clients to the server.
+# The Crypto Purge 
+A crypto NFT game based on The Purge 💸 for Sonar Token 🧭
 
 ## Intructions to run the projects
 - **Client side:**
 ```
-cd basic/client
-npm start
+cd app
+yarn start
 ```
 - **Server side:**
 ```
-cd basic/server
-npm start
+cd server
+yarn start
 ```
-
-## Next step
-- Clone the next example `git clone -b server-client https://github.com/proyecto26/Phaser-Workshop.git`
 
 ## Happy coding 💯
 Made with ❤️
