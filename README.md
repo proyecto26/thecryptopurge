@@ -17,6 +17,8 @@ yarn start
 - **Crypto side:**
 ```
 cd crypto
+npx hardhat compile
+npx hardhat test
 npx hardhat run scripts/nft-script.js
 ```
 
