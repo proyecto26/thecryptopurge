@@ -1,0 +1,227 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/**
+   * @author       @karlmacklin <tacklemcclean@gmail.com>
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       @karlmacklin <tacklemcclean@gmail.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Jeremy Dowell <jeremy@codevinsky.com>
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Mat Groves http://matgroves.com @Doormat23
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Mat Groves http://matgroves.com/
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Mat Groves http://matgroves.com/ @Doormat23
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Miller Medeiros http://millermedeiros.github.com/js-signals/
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @author       @karlmacklin <tacklemcclean@gmail.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @author       Adrien Brault <adrien.brault@gmail.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @author       Chad Engler <chad@pantherdev.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @author       Mat Groves (@Doormat23)
+   * @author       Rovanion Luckey
+   * @copyright    2016 Photon Storm Ltd, Richard Davey
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @author       Mat Groves (@Doormat23)
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @author       Timo Hausmann
+   * @author       Richard Davey <rich@photonstorm.com>
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+   * @copyright    2016 Photon Storm Ltd.
+   * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+   */
+
+/**
+  * @author       George https://github.com/georgiee
+  * @author       Richard Davey <rich@photonstorm.com>
+  * @copyright    2016 Photon Storm Ltd.
+  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+  */
+
+/**
+  * @author       Georgios Kaleadis https://github.com/georgiee
+  * @author       Richard Davey <rich@photonstorm.com>
+  * @copyright    2016 Photon Storm Ltd.
+  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+  */
+
+/**
+  * @author       Richard Davey <rich@photonstorm.com>
+  * @copyright    2016 Photon Storm Ltd.
+  * @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+  */
+
+/**
+ * @license
+ * Lodash <https://lodash.com/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/**
+* @author       Richard Davey <rich@photonstorm.com>
+* @copyright    2016 Photon Storm Ltd.
+* @license      {@link https://github.com/photonstorm/phaser/blob/master/license.txt|MIT License}
+*/
+
+/**
+* @author       Richard Davey <rich@photonstorm.com>
+* @copyright    2020 Photon Storm Ltd.
+* @license      {@link https://github.com/photonstorm/phaser-ce/blob/master/license.txt|MIT License}
+*
+* @overview
+*
+* Phaser CE - https://github.com/photonstorm/phaser-ce
+*
+* v2.19.1 "2021-10-13" - Built: Tue Oct 19 2021 11:50:22
+*
+* By Richard Davey http://www.photonstorm.com @photonstorm and Phaser CE contributors
+*
+* Phaser - http://phaser.io
+*/
+
+/**
+* @author       Richard Davey <rich@photonstorm.com>
+* @copyright    2020 Photon Storm Ltd.
+* @license      {@link https://github.com/photonstorm/phaser-ce/blob/master/license.txt|MIT License}
+*
+* @overview
+*
+* Phaser CE - https://github.com/photonstorm/phaser-ce
+*
+* v2.19.1 "2021-10-13" - Built: Tue Oct 19 2021 11:50:28
+*
+* By Richard Davey http://www.photonstorm.com @photonstorm and Phaser CE contributors
+*
+* Phaser - http://phaser.io
+*/
+
+/** @license React v0.20.2
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-dom.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
