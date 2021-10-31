@@ -9,12 +9,11 @@ import './Home.css'
 export default withRouter(({ history }) => {
   const { error, connect, currentAccount, isConnected } = useMetamask()
   const { likes, loading, handleOnClick } = usePortalContract()
-  const onLikePress = useCallback(async () => {
+  const onConnectPress = useCallback(async () => {
     if (!isConnected) {
       await connect()
     }
-    history.push('/game')
-  }, [history, connect, isConnected])
+  }, [connect, isConnected])
 
   return (
     <section className="container mx-auto min-h-screen flex flex-col">
@@ -59,11 +58,11 @@ export default withRouter(({ history }) => {
           </div>
         )}
         {isConnected ? (
-          <button disabled={!!error} onClick={onLikePress} className="disabled:opacity-50 bg-green-500 hover:bg-green-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
+          <button disabled={!!error} onClick={() => history.push('/game')} className="disabled:opacity-50 bg-green-500 hover:bg-green-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
             Play
           </button>
         ) : (
-          <button onClick={onLikePress} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
+          <button onClick={onConnectPress} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
             Connect
           </button>
         )}
