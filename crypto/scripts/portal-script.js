@@ -27,10 +27,9 @@ const main = async () => {
   count = await contract.getTotalLikes();
 
   // Give a like with a random wallet address
-  txn = await contract.connect(randomWallet).like();
-  await txn.wait();
-
-  count = await contract.getTotalLikes();
+  //txn = await contract.connect(randomWallet).like();
+  //await txn.wait();
+  //count = await contract.getTotalLikes();
 };
 
 const runMain = async () => {
