@@ -15,8 +15,8 @@ const main = async () => {
   const contract = await contractFactory.deploy();
   await contract.deployed();
 
-  console.log("Contract deployed to:", contract.address);
-  console.log("Contract deployed by:", owner.address);
+  console.log('Contract deployed to:', contract.address);
+  console.log('Contract deployed by:', owner.address);
 
   let count;
   count = await contract.getTotalLikes();
@@ -27,9 +27,18 @@ const main = async () => {
   count = await contract.getTotalLikes();
 
   // Give a like with a random wallet address
-  //txn = await contract.connect(randomWallet).like();
-  //await txn.wait();
-  //count = await contract.getTotalLikes();
+  const contractsWithRandomWallet = contract.connect(randomWallet);
+  txn = await contractsWithRandomWallet.like();
+  await txn.wait();
+  count = await contract.getTotalLikes();
+
+  console.log('Total likes:', count.toString());
+
+  // Send a message with a random wallet address
+  txn = await contractsWithRandomWallet.sendMessage('Hello World!');
+  await txn.wait();
+
+  console.log('All Messages:', await contract.getAllMessages());
 };
 
 const runMain = async () => {

@@ -24,7 +24,8 @@ npx hardhat help
 ### Deployed Contracts:
 
 - **Portal script**:
-  - Etherscan link: https://rinkeby.etherscan.io/address/0x0dd220E5ec89e9B05CB3D52Eb4181d81e6714ddb
+  - V1 Likes: https://rinkeby.etherscan.io/address/0x0dd220E5ec89e9B05CB3D52Eb4181d81e6714ddb
+  - V2 Messages: https://rinkeby.etherscan.io/address/0x34EB1E92033F81dFe7a7A22b3b55bFd2Ea11aB1A
 
 
 ## Faucet
@@ -55,4 +56,5 @@ We can grab some fake `ETH` for `Rinkeby` through a `faucet`:
 - **Rinkeby**: a **testnet** network which is run by the Ethereum foundation.
 - **Etherscan**: a place that just shows us the state of the blockchain and helps us see where our transaction is at.
 - **ABI**: the standard way to interact with contracts in the Ethereum ecosystem. Read about it [here](https://docs.soliditylang.org/en/v0.5.3/abi-spec.html).
-- **Gas**: a cost needed to notify the miners so that the transaction can be mined. Read about it [here](https://ethereum.org/en/developers/docs/gas/). 
+- **Gas**: a cost needed to notify the miners so that the transaction can be mined. Read about it [here](https://ethereum.org/en/developers/docs/gas/).
+- **ethers**: a library that helps our frontend talk to our contract.

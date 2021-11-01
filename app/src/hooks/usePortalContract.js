@@ -7,20 +7,29 @@ import { CUSTOM_ERRORS } from '../constants'
 /**
  * TODO: Remove this variable here that holds the contract address after you deploy!
  */
-const contractAddress = '0x0dd220E5ec89e9B05CB3D52Eb4181d81e6714ddb'
+const contractAddress = '0x34EB1E92033F81dFe7a7A22b3b55bFd2Ea11aB1A'
 const contractABI = portalContract.abi
 
 export function usePortalContract () {
   const contractRef = useRef()
   const [error, setError] = useState()
   const [likes, setLikes] = useState(0)
+  const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(false)
 
-  const loadLikes = useCallback(async () => {
+  const loadData = useCallback(async () => {
     try {
       const contract = contractRef.current
       const count = await contract.getTotalLikes()
       setLikes(count.toNumber())
+      const messages = await contract.getAllMessages()
+      if (messages) {
+        setMessages(messages.map(m => ({
+          from: m.user.toLowerCase(),
+          message: m.message,
+          timestamp: new Date(m.timestamp * 1000),
+        })))
+      }
     } catch (err) {
       setError(err)
     }
@@ -39,27 +48,43 @@ export function usePortalContract () {
     const signer = provider.getSigner()
     const contract = new ethers.Contract(contractAddress, contractABI, signer)
     contractRef.current = contract
-    loadLikes().finally(() => setLoading(false))
-  }, [loadLikes])
+    loadData().finally(() => setLoading(false))
+  }, [loadData])
 
-  const handleOnClick = useCallback(async () => {
+  const onLike = useCallback(async () => {
     setLoading(true)
     try {
       const contract = contractRef.current
       const tx = await contract.like()
       await tx.wait()
-      await loadLikes()
+      await loadData()
     } catch (err) {
       setError(err)
     } finally {
       setLoading(false)
     }
-  }, [loadLikes])
+  }, [loadData])
+
+  const onSendMessage = useCallback(async (message) => {
+    setLoading(true)
+    try {
+      const contract = contractRef.current
+      const tx = await contract.sendMessage(message)
+      await tx.wait()
+      await loadData()
+    } catch (err) {
+      setError(err)
+    } finally {
+      setLoading(false)
+    }
+  }, [loadData])
 
   return {
     error,
     likes,
     loading,
-    handleOnClick,
+    messages,
+    onLike,
+    onSendMessage,
   }
 }

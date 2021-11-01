@@ -15,7 +15,7 @@ export function useMetamask () {
       setError(new Error(CUSTOM_ERRORS.NO_CONNECTED))
     } else if (accounts[0] !== currentAccount) {
       account = accounts[0]
-      setCurrentAccount(accounts[0])
+      setCurrentAccount(accounts[0].toLowerCase())
     }
     return account
   }, [currentAccount])

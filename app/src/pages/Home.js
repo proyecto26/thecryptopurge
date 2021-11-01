@@ -4,11 +4,12 @@ import { withRouter } from 'react-router-dom'
 import { CHAIN_NETWORKS, SUPPORTED_CHAIN_ID } from '../constants'
 import { useMetamask } from '../hooks/useMetamask'
 import { usePortalContract } from '../hooks/usePortalContract'
+import MessageContainer from '../containers/MessageContainer'
 import './Home.css'
 
 export default withRouter(({ history }) => {
   const { error, connect, currentAccount, isConnected } = useMetamask()
-  const { likes, loading, handleOnClick } = usePortalContract()
+  const { likes, loading, messages, onLike, onSendMessage } = usePortalContract()
   const onConnectPress = useCallback(async () => {
     if (!isConnected) {
       await connect()
@@ -31,7 +32,7 @@ export default withRouter(({ history }) => {
             </svg>
           </button>
         ) : (
-          <button disabled={!!error} onClick={handleOnClick} className="disabled:opacity-50 mx-5 bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
+          <button disabled={!!error} onClick={onLike} className="disabled:opacity-50 mx-5 bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
             <svg className="h-8 w-8 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
           </button>
         )}
@@ -66,6 +67,7 @@ export default withRouter(({ history }) => {
             Connect
           </button>
         )}
+        <MessageContainer account={currentAccount} messages={messages} sendMessage={onSendMessage} />
       </div>
     </section>
   )
