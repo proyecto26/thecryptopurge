@@ -7,7 +7,7 @@ import { CUSTOM_ERRORS } from '../constants'
 /**
  * TODO: Remove this variable here that holds the contract address after you deploy!
  */
-const contractAddress = '0x34EB1E92033F81dFe7a7A22b3b55bFd2Ea11aB1A'
+const contractAddress = '0x05c0eb7365fF030d2C19F5986aD1Bdb35850AddB'
 const contractABI = portalContract.abi
 
 export function usePortalContract () {
@@ -66,6 +66,9 @@ export function usePortalContract () {
   }, [loadData])
 
   const onSendMessage = useCallback(async (message) => {
+    if (!message) {
+      throw new Error('Message is required')
+    }
     setLoading(true)
     try {
       const contract = contractRef.current
@@ -74,6 +77,7 @@ export function usePortalContract () {
       await loadData()
     } catch (err) {
       setError(err)
+      throw err
     } finally {
       setLoading(false)
     }

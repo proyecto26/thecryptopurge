@@ -7,10 +7,14 @@ const MessageContainer = ({ account, messages, sendMessage }) => {
     setMessage(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    sendMessage(message);
-    setMessage('');
+    try {
+      await sendMessage(message);
+      setMessage('');
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
