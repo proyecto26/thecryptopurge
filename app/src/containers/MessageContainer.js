@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
+import { DateTime } from 'luxon'
 
 const MessageContainer = ({ account, messages, sendMessage }) => {
   const [message, setMessage] = useState('');
@@ -17,14 +18,22 @@ const MessageContainer = ({ account, messages, sendMessage }) => {
     }
   };
 
+  const messagesList = useMemo(() => {
+    return messages.map((message) => ({
+      ...message,
+      date: DateTime.fromJSDate(message.timestamp).toFormat('F')
+    }))
+  }, [messages])
+
   return (
     <div className="flex flex-col">
       <div className="mt-20 mb-16 clearfix w-full">
-        {messages.map(({ message, from }, index) => (
-          <div key={index} className="clearfix">
+        {messagesList.map(({ message, from, date }, index) => (
+          <div key={index} className={`relative flex flex-col ${ from === account ? 'items-end' : '' }`}>
             <div
-              className={`bg-gray-300 w-3/4 mx-4 my-2 p-2 rounded-lg clearfix ${ from === account ? 'bg-green-300 float-right' : '' }`}
+              className={`bg-gray-300 w-3/4 mx-4 my-2 p-2 rounded-lg ${ from === account ? 'bg-green-300' : '' }`}
             >{message}</div>
+            <div className="mx-4"><small class="text-gray-500">{date}</small></div>
           </div>
         ))}
       </div>
