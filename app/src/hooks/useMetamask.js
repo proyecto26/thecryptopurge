@@ -8,6 +8,15 @@ export function useMetamask () {
   const [isConnected, setIsConnected] = useState(() => window.ethereum?.isConnected())
   const [currentAccount, setCurrentAccount] = useState()
 
+  useEffect(() => {
+    if (window.ethereum) {
+      setIsConnected(window.ethereum.isConnected())
+    }
+  }, [currentAccount])
+
+  /***********************************************************/
+  /* Handle user accounts and accountsChanged (per EIP-1193) */
+  /***********************************************************/
   const handleAccountsChanged = useCallback((accounts) => {
     let account = currentAccount
     if (!accounts.length) {
@@ -20,11 +29,16 @@ export function useMetamask () {
     return account
   }, [currentAccount])
 
-  useEffect(() => {
-    if (window.ethereum) {
-      setIsConnected(window.ethereum.isConnected())
+  /**********************************************************/
+  /* Handle chain (network) and chainChanged (per EIP-1193) */
+  /**********************************************************/
+  const handleChainChanged = useCallback((chainId) => {
+    const decimal = parseInt(chainId)
+    if (CHAIN_NETWORKS[decimal]) {
+      console.log(`You are on the ${CHAIN_NETWORKS[decimal]} network :)`)
     }
-  }, [currentAccount])
+    setError(decimal === SUPPORTED_CHAIN_ID ? null : new Error(CUSTOM_ERRORS.UNSUPPORTED_NETWORK))
+  }, [])
 
   useEffect(() => {
     if (!window.ethereum) {
@@ -41,22 +55,9 @@ export function useMetamask () {
       }
     })
 
-    /**********************************************************/
-    /* Handle chain (network) and chainChanged (per EIP-1193) */
-    /**********************************************************/
-    const onChainChanged = (chainId) => {
-      const decimal = parseInt(chainId)
-      if (CHAIN_NETWORKS[decimal]) {
-        console.log(`You are on the ${CHAIN_NETWORKS[decimal]} network :)`)
-      }
-      setError(decimal === SUPPORTED_CHAIN_ID ? null : new Error(CUSTOM_ERRORS.UNSUPPORTED_NETWORK))
-    }
-    window.ethereum.request({ method: ETH.CHAIN_ID }).then(onChainChanged)
-    window.ethereum.on(ETH.CHAIN_CHANGED, onChainChanged)
+    window.ethereum.request({ method: ETH.CHAIN_ID }).then(handleChainChanged)
+    window.ethereum.on(ETH.CHAIN_CHANGED, handleChainChanged)
 
-    /***********************************************************/
-    /* Handle user accounts and accountsChanged (per EIP-1193) */
-    /***********************************************************/
     window.ethereum.request({ method: ETH.ACCOUNTS })
     .then(handleAccountsChanged)
     .catch((err) => {
@@ -66,8 +67,7 @@ export function useMetamask () {
       setError(err)
     })
     window.ethereum.on(ETH.ACCOUNTS_CHANGED, handleAccountsChanged)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [handleChainChanged, handleAccountsChanged])
 
   /*********************************************/
   /* Access the user's accounts (per EIP-1102) */
