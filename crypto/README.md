@@ -26,7 +26,8 @@ npx hardhat help
 - **Portal script**:
   - V1 Likes: https://rinkeby.etherscan.io/address/0x0dd220E5ec89e9B05CB3D52Eb4181d81e6714ddb
   - V2 Messages: https://rinkeby.etherscan.io/address/0x05c0eb7365fF030d2C19F5986aD1Bdb35850AddB
-
+- **Game script**:
+  - V1 Founds: https://rinkeby.etherscan.io/address/0xCaaAdB609709B92457cC8a72568c55ae93bDB26B
 
 ## Faucet
 

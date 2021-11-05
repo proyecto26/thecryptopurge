@@ -22,7 +22,7 @@ contract TheCryptoPurgePortal {
      */
     Message[] messages;
 
-    constructor() {
+    constructor() payable {
         console.log("The Crypto Purge Portal :)");
     }
 
