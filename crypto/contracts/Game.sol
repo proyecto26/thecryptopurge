@@ -86,7 +86,7 @@ contract TheCryptoPurgeGame is ERC721 {
 
     // Save the NFT in the storage
     characterNFTs[tokenId] = Character({
-      index: characters.length,
+      index: tokenId,
       health: health,
       maxHealth: health,
       attack: attack,
