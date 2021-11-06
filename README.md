@@ -1,7 +1,9 @@
 # The Crypto Purge 
 The most revolutionary crypto survival real-time game and NFT marketplace on **Binance Smart Chain**.
 
-![The Crypto Purge](img/thecryptopurge.jpeg)
+<p align="center">
+  <a href="https://bio.link/thecryptopurge" target="blank"><img src="img/thecryptopurge.jpeg" width="680" alt="The Crypto Purge" /></a>
+</p>
 
 ## Inspiration
 **The Crypto Purge** is a real-time game based on The Purge, a 2013 American dystopian action horror film.
