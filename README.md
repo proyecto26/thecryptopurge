@@ -24,6 +24,18 @@ Creating a decentralized real-time game that requires a back-end connection usin
 
 Developing an `authoritative server architecture` introduce a whole new class of challenges; `Client-Side Prediction`, `Server Reconciliation`, `Entity Interpolation`, `Lag Compensation` dealing with networks and scaling the system itself.
 
+## Accomplishments that we're proud of
+We're proud to have created the real-time connection of the game, creating the smart contracts of the platform and the base architecture of the project; **front-end**, **back-end** and the smart contracts development using **Hardhat**.
+
+## What we learned
+We learned about Blockchain, Smart Contracts, Games, NFTs, Physics, Real-time connections, Crypto wallets and much more!
+
+## What's next for The Crypto Purge
+
+- Define a `System Design` for Cloud platforms like **AWS** that can scale easily.
+- Apply to **Y Combinator** to get funding.
+- Migrate the back-end to use a microservices architecture and use a language like **Go** with better benchmarks in terms of scalability as required by the system.
+
 ## Intructions to run the projects
 - **Client side:**
 ```
