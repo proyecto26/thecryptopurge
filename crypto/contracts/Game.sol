@@ -32,7 +32,7 @@ contract TheCryptoPurgeGame is ERC721 {
     uint[] memory characterHealths,
     uint[] memory characterAttacks
   ) payable ERC721("TheCryptoPurge", "ePING") {
-    // Initialize the NFT contract
+    // Save the NFT contract
     nft = _nft;
     // Initialize the game with default characters
     for (uint i = 0; i < characterNames.length; i++) {
