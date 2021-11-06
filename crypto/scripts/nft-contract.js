@@ -1,6 +1,6 @@
 const { ethers } = require('hardhat');
 
-const main = async () => {
+exports.deployNFTContract = async () => {
   // Compiling our Smart Contract.
   const contractFactory = await ethers.getContractFactory('TheCryptoPurgeNFT');
 
@@ -12,21 +12,5 @@ const main = async () => {
 
   console.log('Contract deployed:', contract.address);
 
-  // Mint a NFT.
-  const txn = await contract.makeNFT();
-
-  // Wait for the transaction to be mined.
-  await txn.wait();
+  return contract;
 };
-
-const initialize = async () => {
-  try {
-    await main();
-    process.exit();
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
-  }
-};
-
-initialize();

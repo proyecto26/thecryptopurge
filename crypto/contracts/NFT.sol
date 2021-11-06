@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract TheCryptoPurgeNFT is ERC721URIStorage {
+  mapping(address => uint256) public holders;
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
@@ -14,7 +15,11 @@ contract TheCryptoPurgeNFT is ERC721URIStorage {
     console.log("Collection initialized, yay!");
   }
 
-  function makeNFT() public {
+  function getTotalCollection() public view returns (uint256) {
+    return _tokenIds.current();
+  }
+
+  function mintNFT(string memory jsonData) public returns (uint256) {
     // Get token id
     uint256 tokenId = _tokenIds.current();
     
@@ -22,18 +27,15 @@ contract TheCryptoPurgeNFT is ERC721URIStorage {
     _safeMint(msg.sender, tokenId);
 
     // Set the NFT's data
-    /**
-     *  {
-     *    "name": "The Crypto Purge Player",
-     *    "description": "A sprite of a simple character-player",
-     *    "image": "https://raw.githubusercontent.com/proyecto26/Phaser-Workshop/client-server/client/assets/images/player.png"
-     *  }
-     */
-    _setTokenURI(tokenId, "https://jsonkeeper.com/b/OGGV");
+    _setTokenURI(tokenId, jsonData);
+
+    // Save NFT owner
+    holders[msg.sender] = tokenId;
 
     // Increment counter
     _tokenIds.increment();
 
     console.log("NFT minted, tokenId: %s", tokenId);
+    return tokenId;
   }
 }

@@ -20,7 +20,7 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY || 'your private key'
  */
 module.exports = {
   solidity: '0.8.4',
-  defaultNetwork: 'rinkeby',
+  defaultNetwork: 'localhost',
   networks: {
     rinkeby: {
       url: RINKEBY_RPC_URL,
@@ -31,4 +31,7 @@ module.exports = {
       saveDeployments: true,
     }
   },
+  mocha: {
+    timeout: 20000
+  }
 };

@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol";
 
+import "./NFT.sol";
+
 contract TheCryptoPurgeGame is ERC721 {
   uint256 numberOfRounds;
 
@@ -19,13 +21,20 @@ contract TheCryptoPurgeGame is ERC721 {
   }
 
   Character[] characters;
+  TheCryptoPurgeNFT nft;
+  // NFTs minted by this contract
+  mapping(uint256 => Character) public characterNFTs;
 
   constructor(
+    TheCryptoPurgeNFT _nft,
     string[] memory characterNames,
     string[] memory characterImages,
     uint[] memory characterHealths,
     uint[] memory characterAttacks
   ) payable ERC721("TheCryptoPurge", "ePING") {
+    // Initialize the NFT contract
+    nft = _nft;
+    // Initialize the game with default characters
     for (uint i = 0; i < characterNames.length; i++) {
       Character memory character = Character({
         index: i,
@@ -50,7 +59,7 @@ contract TheCryptoPurgeGame is ERC721 {
   }
 
   function finish() public {
-    console.log("Game finished");
+    console.log("Round finished");
 
     // Send ETH to winners
     uint256 prizeAmount = 0.0001 ether;
@@ -65,22 +74,26 @@ contract TheCryptoPurgeGame is ERC721 {
     require(success, "Failed to withdraw money from contract.");
   }
 
-  /*function mintCharacterNFT(
+  function mintCharacterNFT(
     string memory name,
     string memory imageUri,
     uint health,
     uint attack
   ) public returns (uint256) {
-    uint256 characterIndex = characters.length;
-    Character memory character = Character(
-      characterIndex,
-      health,
-      health,
-      attack,
-      name,
-      imageUri
-    );
-    characters.push(character);
-    return characterIndex;
-  }*/
+    // TODO: Save image from IPFS and send the json data to the NFT contract
+    // Create the NFT
+    uint256 tokenId = nft.mintNFT('');
+
+    // Save the NFT in the storage
+    characterNFTs[tokenId] = Character({
+      index: characters.length,
+      health: health,
+      maxHealth: health,
+      attack: attack,
+      name: name,
+      imageUri: imageUri
+    });
+
+    return tokenId;
+  }
 }
