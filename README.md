@@ -6,7 +6,7 @@ The most revolutionary crypto shooter/survival real-time game with a NFT marketp
 </p>
 
 ## Inspiration
-`The Crypto Purge` is a real-time game based on The Purge, a 2013 American dystopian action horror film.
+`The Crypto Purge` is a real-time game based on [The Purge (an American dystopian action horror film)](https://en.wikipedia.org/wiki/The_Purge).
 
 ## What it does
 Players will have multiple modes to play the game, `single` and `multiplayer`. **Single mode** includes killing zombies and social ranking with friends for earn prizes, the top scorers on the `leaderboard` will split the prize pool grant. 
