@@ -14,6 +14,9 @@ Players will have multiple modes to play the game, `single` and `multiplayer`. *
 
 `The Crypto Purge` has a crypto integrated backend that runs on **Binance Smart Chain**. **Smart contracts** are responsible for prize pool redistribution and **web3.js (Metamask, etc)** takes care of the wallet connection.
 
+The game allow users to mint custom skins to be used in the game. Player will differ in appearance and style, but they will have no effect on the game mode.
+All players will have an equal change of winning the game.
+
 ## Intructions to run the projects
 - **Client side:**
 ```
