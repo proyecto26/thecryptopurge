@@ -6,12 +6,13 @@ The most revolutionary crypto survival real-time game and NFT marketplace on **B
 </p>
 
 ## Inspiration
-**The Crypto Purge** is a real-time game based on The Purge, a 2013 American dystopian action horror film.
+`The Crypto Purge` is a real-time game based on The Purge, a 2013 American dystopian action horror film.
 
 ## What it does
-Players will have multiple modes to play the game, `single` and `multiplayer`. Single mode includes killing zombies and social ranking with friends for earn prizes. 
-Multiplayer mode allows players to contribute a certain amount of tokens to the prize pool before each game and the prize pool is split by `Smart Contracts` and a `Server Side authority` between the **winners** of the game.
-**The Crypto Purge** has a crypto integrated backend that runs on **Binance Smart Chain**. **Smart contracts** are responsible for prize pool redistribution and **web3.js (Metamask, etc)** takes care of the wallet connection.
+Players will have multiple modes to play the game, `single` and `multiplayer`. **Single mode** includes killing zombies and social ranking with friends for earn prizes. 
+**Multiplayer mode** allows players to contribute a certain amount of tokens to the prize pool before each game and the prize pool is split by `Smart Contracts` and a `Server Side authority` between the **winners** of the game.
+
+`The Crypto Purge` has a crypto integrated backend that runs on **Binance Smart Chain**. **Smart contracts** are responsible for prize pool redistribution and **web3.js (Metamask, etc)** takes care of the wallet connection.
 
 ## Intructions to run the projects
 - **Client side:**
