@@ -6,11 +6,11 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol"; */
 
-import "./Game.sol";
+import "./IGame.sol";
 
 contract Leaderboard {
     struct Game {
-        Game game;
+        IGame game;
         address[] boardPlayers;
         uint256[] boardScores;
         uint256 begin;
@@ -51,7 +51,7 @@ contract Leaderboard {
     // This function is used to create a board
     // This is done by instantiating a game and pushing into the games list
     function createBoard(
-        Game game,
+        IGame game,
         uint256 timestampBegin,
         uint256 timestampEnd
     ) public payable {
@@ -208,9 +208,11 @@ contract Leaderboard {
 /* PD: Leaderboard is a contract used to store position tables for on-chain games. 
 A position table organize a max of 10 players (where position[0] is the player with the highest amount of points). 
 To create a table, it is required to specify the game contract address.
-`createBoard(Game game, uint256 timestampBegin, uint256 timestampEnd) public`
-Any game must implement the interface Game in order to be compatible with this leaderboard. 
-Any Game implementation must have the next functions:
+`createBoard(IGame game, uint256 timestampBegin, uint256 timestampEnd) public`
+Any game must implement the interface IGame in order to be compatible with this leaderboard. 
+
+
+Any IGame implementation must have the next functions:
 `getLifetimeScore(address player) public view`
 At the end of the defined timestamp, the players get a reward according to the position on the table.
 The position table can be updated by anyone by calling the public function "update(uint leaderboardId)", 
