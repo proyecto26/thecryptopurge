@@ -1,4 +1,4 @@
-# The Crypto Purge 
+# The Crypto Purge 💸
 The most revolutionary crypto survival real-time game and NFT marketplace on **Binance Smart Chain**.
 
 <p align="center">
