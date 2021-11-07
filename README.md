@@ -20,7 +20,7 @@ The game allow users to mint custom skins with **NFTs** to be used in the game. 
 All players will have an equal change of winning the game.
 
 ## Challenges we ran into
-Creating a decentralized real-time game that requires a back-end connection using `WebSockets` is the most challenging part of the project, additionally because **"don’t trust the player. Always assume the worst – that players will try to cheat"**, so it requires an `authority server` to create a **cheat-proof** architecture as cheating players tends to drive the players away from the game, therefore the core problems are `human nature` and `physics`.
+Creating a **decentralized real-time** game that requires a back-end connection using `WebSockets` is the most challenging part of the project, additionally because **"don’t trust the player. Always assume the worst – that players will try to cheat"**, so it requires an `authority server` to create a **cheat-proof** architecture as cheating players tends to drive the players away from the game, therefore the core problems are `human nature` and `physics`.
 
 Developing an `authoritative server architecture` introduce a whole new class of challenges; `Client-Side Prediction`, `Server Reconciliation`, `Entity Interpolation`, `Lag Compensation` dealing with networks and scaling the system itself.
 
