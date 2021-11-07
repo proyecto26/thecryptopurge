@@ -12,7 +12,7 @@ Any `IGame` implementation must have the next functions:
 `getLifetimeScore(address player) public view`
 
 At the end of the defined timestamp, the players get a reward according to the position on the table.
-The position table can be updated by anyone by calling the public function "update(uint leaderboardId)", 
+The position table can be updated by anyone by calling the public function `update(uint leaderboardId)`, 
 which iterates over the participants list, getting the points for each player and updates the table.
 Once the timestamp has finished, the players cannot update the leaderboard anymore and can withdraw their rewards.
 
