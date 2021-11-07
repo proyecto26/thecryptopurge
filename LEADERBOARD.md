@@ -1,6 +1,6 @@
 # Leaderboard
 Leaderboard is a contract used to store position tables for on-chain games. 
-A position table organize a max of 10 players, where **position[0]** is the player with the highest amount of points. 
+A position table organize a max of 10 players, where `position[0]` is the player with the highest amount of points. 
 
 To create a table, it is required to specify the game contract address:
 `createBoard(IGame game, uint256 timestampBegin, uint256 timestampEnd) public`
