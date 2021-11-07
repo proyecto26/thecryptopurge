@@ -8,7 +8,7 @@ To create a table, it is required to specify the game contract address:
 Any game must implement the interface IGame in order to be compatible with this leaderboard. 
 
 
-Any IGame implementation must have the next functions:
+Any `IGame` interface implementation must have the next functions:
 `getLifetimeScore(address player) public view`
 
 At the end of the defined timestamp, the players get a reward according to the position on the table.
