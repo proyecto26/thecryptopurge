@@ -5,10 +5,10 @@ A position table organize a max of 10 players, where `position[0]` is the player
 To create a table, it is required to specify the game contract address:
 `createBoard(IGame game, uint256 timestampBegin, uint256 timestampEnd) public`
 
-Any game must implement the interface IGame in order to be compatible with this leaderboard. 
+Any game must implement the interface `IGame` in order to be compatible with this leaderboard. 
 
 
-Any `IGame` interface implementation must have the next functions:
+Any `IGame` implementation must have the next functions:
 `getLifetimeScore(address player) public view`
 
 At the end of the defined timestamp, the players get a reward according to the position on the table.
