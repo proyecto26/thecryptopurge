@@ -1,5 +1,5 @@
 # The Crypto Purge 💸
-The most revolutionary crypto shooter-survival real-time game with a NFT marketplace on **Binance Smart Chain**.
+The most revolutionary crypto shooter-survival real-time NFT-based game on **Binance Smart Chain**.
 
 <p align="center">
   <a href="https://bio.link/thecryptopurge" target="blank"><img src="img/thecryptopurge.jpeg" width="680" alt="The Crypto Purge" /></a>
