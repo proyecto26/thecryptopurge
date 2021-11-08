@@ -6,10 +6,10 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol";
 
-import "./Common.sol";
+import "./models/Game.sol";
 import "./NFT.sol";
 
-contract TheCryptoPurgeGame is ERC721, CommonData {
+contract TheCryptoPurgeGame is ERC721, GameModel {
   uint256 numberOfRounds;
   Character[] characters;
   TheCryptoPurgeNFT nft;

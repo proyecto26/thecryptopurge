@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol"; */
 
-import "./IGame.sol";
+import "./interfaces/IGame.sol";
 
 contract Leaderboard {
     struct Game {

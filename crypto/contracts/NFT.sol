@@ -6,9 +6,9 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
 import "./libraries/Base64.sol";
-import "./Common.sol";
+import "./models/Game.sol";
 
-contract TheCryptoPurgeNFT is ERC721URIStorage, CommonData {
+contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
   string constant description = 'This is a NFT that lets people play "The Crypto Purge" game with their own unique skins';
   mapping(address => uint256) public holders;
   // NFTs minted by this contract
