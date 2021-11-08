@@ -8,24 +8,12 @@ const deployContract = async () => {
   // Deploy our contract to the local blockchain.
   // Fund the contract so we can send ETH!
   const contract = await contractFactory.deploy({
-    value: ethers.utils.parseEther('0')
+    value: ethers.utils.parseEther('0.01')
   });
   // Await for the contract to be mined.
   await contract.deployed();
   console.log('Contract deployed to:', contract.address);
   return contract;
-};
-
-const sendMessage = async (contract, message) => {
-  const transaction = await contract.sendMessage(message);
-  // Wait for the transaction to be mined.
-  await transaction.wait();
-};
-
-const sendLike = async (contract) => {
-  const transaction = await contract.like();
-  // Wait for the transaction to be mined.
-  await transaction.wait();
 };
 
 /**
@@ -35,35 +23,29 @@ const sendLike = async (contract) => {
  */
 const main = async () => {
   // https://hardhat.org/advanced/hardhat-runtime-environment.html
-  const [owner, randomWallet] = await hre.ethers.getSigners();
+  const [owner] = await hre.ethers.getSigners();
 
   // Get Owner balance
-  await getAccountBalance(owner);
+  console.log('Account balance:', await getAccountBalance(owner));
 
+  // Deploy and get contract balance
   const contract = await deployContract();  
   console.log('Contract deployed by:', owner.address);
-
   // Get Contract balance
-  await getContractBalance(contract.address);
+  console.log('Contract balance:', await getContractBalance(contract.address));
 
-  let count;
-  count = await contract.getTotalLikes();
-  
-  await sendLike(contract);
-
-  count = await contract.getTotalLikes();
-
-  // Give a like with a random wallet address
-  const contractsWithRandomWallet = contract.connect(randomWallet);
-  await sendLike(contractsWithRandomWallet);
-  count = await contract.getTotalLikes();
-
+  // Get total likes
+  const count = await contract.getTotalLikes();
   console.log('Total likes:', count.toString());
 
-  // Send a message with a random wallet address
-  await sendMessage(contractsWithRandomWallet, 'Hello World!');
+  // Feeling lucky
+  console.log('Feeling lucky...');
+  const transaction = await contract.feelingLucky();
+  // Wait for the transaction to be mined.
+  await transaction.wait();
 
-  console.log('All Messages:', await contract.getAllMessages());
+  // Get Contract balance
+  console.log('Contract balance:', await getContractBalance(contract.address));
 };
 
 const runMain = async () => {

@@ -14,14 +14,14 @@ describe('TheCryptoPurgeNFT', function () {
     expect(await contract.getTotalCollection()).to.equal(0);
 
     // Mint a NFT.
-    /**
-     *  {
-     *    "name": "The Crypto Purge Player",
-     *    "description": "A sprite of a simple character-player",
-     *    "image": "https://raw.githubusercontent.com/proyecto26/Phaser-Workshop/client-server/client/assets/images/player.png"
-     *  }
-     */
-    const txn = await contract.mintNFT('https://jsonkeeper.com/b/OGGV');
+    const txn = await contract.mintNFT({
+      index: 0,
+      name: 'player',
+      imageUri: 'https://raw.githubusercontent.com/proyecto26/Phaser-Workshop/client-server/client/assets/images/player.png',
+      health: 1000,
+      maxHealth: 1000,
+      attackDamage: 100
+    });
     // Wait for the transaction to be mined.
     await txn.wait();
 

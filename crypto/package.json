@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx hardhat run scripts/game-script.js --network localhost",
     "test": "npx hardhat test",
-    "deploy": "npx hardhat run scripts/game-script.js --network rinkeby"
+    "deploy": "npx hardhat run scripts/game-script.js --network rinkeby",
+    "deploy:portal": "npx hardhat run scripts/portal-script.js --network rinkeby"
   },
   "keywords": [],
   "author": "",

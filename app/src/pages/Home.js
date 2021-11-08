@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { CHAIN_NETWORKS, SUPPORTED_CHAIN_ID } from '../constants'
@@ -8,8 +8,10 @@ import MessageContainer from '../containers/MessageContainer'
 import './Home.css'
 
 export default withRouter(({ history }) => {
-  const { error, connect, currentAccount, isConnected } = useMetamask()
-  const { likes, loading, messages, onLike, onSendMessage } = usePortalContract()
+  const { error: metamaskError, connect, currentAccount, isConnected } = useMetamask()
+  const { error: portalError, likes, loading, messages, onLike, onSendMessage, onFeelingLucky } = usePortalContract()
+  const error = useMemo(() => metamaskError || portalError, [metamaskError, portalError])
+
   const onConnectPress = useCallback(async () => {
     if (!isConnected) {
       await connect()
@@ -58,15 +60,20 @@ export default withRouter(({ history }) => {
             </div>
           </div>
         )}
-        {isConnected ? (
-          <button disabled={!!error} onClick={() => history.push('/game')} className="disabled:opacity-50 bg-green-500 hover:bg-green-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
-            Play
+        <div className="flex justify-center space-x-4">
+          {isConnected ? (
+            <button disabled={!!error} onClick={() => history.push('/game')} className="disabled:opacity-50 bg-green-500 hover:bg-green-700 text-white font-bold mt-6 py-2 px-4 rounded">
+              Play
+            </button>
+          ) : (
+            <button onClick={onConnectPress} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded">
+              Connect
+            </button>
+          )}
+          <button onClick={onFeelingLucky} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded">
+            I'm Feeling Lucky
           </button>
-        ) : (
-          <button onClick={onConnectPress} className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded max-w-xs mx-auto">
-            Connect
-          </button>
-        )}
+        </div>
         <MessageContainer account={currentAccount} messages={messages} sendMessage={onSendMessage} />
       </div>
     </section>

@@ -26,6 +26,7 @@ npx hardhat help
 - **Portal script**:
   - V1 Likes: https://rinkeby.etherscan.io/address/0x0dd220E5ec89e9B05CB3D52Eb4181d81e6714ddb
   - V2 Messages: https://rinkeby.etherscan.io/address/0x05c0eb7365fF030d2C19F5986aD1Bdb35850AddB
+  - V3 Feeling lucky: https://rinkeby.etherscan.io/address/0x04517F6Ac6a4D245742E27a5a0A87547260a2455
 - **Game script**:
   - V1 Founds: https://rinkeby.etherscan.io/address/0xCaaAdB609709B92457cC8a72568c55ae93bDB26B
 
@@ -52,6 +53,8 @@ We can grab some fake `ETH` for `Rinkeby` through a `faucet`:
 
 - **Private key**: used as a password in order to perform a transaction, like deploying a contract to the blockchain.
 - **Transactions**: perform an action on the Ethereum blockchain. e.g: sending ETH to someone, updating a variable in our contracts, also deploying a smart contract.
+- **Block difficulty**: tells miners how hard the block will be to mine based on the transactions in the block. Blocks get harder for a # of reasons, but, mainly they get harder when there are more transactions in the block.
+- **Block timestamp**: an Unix timestamp that the block is being processed.
 - **Alchemy**: help broadcast the contract creation transaction to be mined as quickly as possible.
 - **Testnets**: a clone of **mainnet** but it uses fake money (ether, etc) for testing in a real-world scenario.
 - **Rinkeby**: a **testnet** network which is run by the Ethereum foundation.

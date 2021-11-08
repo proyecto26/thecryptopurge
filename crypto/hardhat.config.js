@@ -9,7 +9,9 @@ require('./tasks/block-number');
 
 require('dotenv').config();
 
+const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL || process.env.ALCHEMY_MAINNET_RPC_URL || "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const RINKEBY_RPC_URL = process.env.ALCHEMY_RINKEBY_RPC_URL || 'https://eth-rinkeby.alchemyapi.io/v2/your-api-key'
+const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || 'your private key'
 
 // You need to export an object to set up your config
@@ -25,11 +27,16 @@ module.exports = {
     rinkeby: {
       url: RINKEBY_RPC_URL,
       accounts: [PRIVATE_KEY],
-      /*accounts: {
-        mnemonic: MNEMONIC,
-      },*/
       saveDeployments: true,
-    }
+    },
+    mainnet: {
+      chainId: 1,
+      url: MAINNET_RPC_URL,
+      accounts: {
+        mnemonic: MNEMONIC,
+      },
+      saveDeployments: true,
+    },
   },
   mocha: {
     timeout: 20000

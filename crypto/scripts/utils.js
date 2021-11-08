@@ -6,10 +6,7 @@ const { ethers } = require('hardhat');
  */
 exports.getContractBalance = async (address) => {
   const contractBalance = await ethers.provider.getBalance(address);
-  console.log(
-    'Contract balance:',
-    ethers.utils.formatEther(contractBalance)
-  );
+  return ethers.utils.formatEther(contractBalance);
 };
 
 /**
@@ -18,5 +15,5 @@ exports.getContractBalance = async (address) => {
  */
 exports.getAccountBalance = async (account) => {
   const accountBalance = await account.getBalance();
-  console.log('Account balance: ', accountBalance.toString());
+  return ethers.utils.formatEther(accountBalance);
 };

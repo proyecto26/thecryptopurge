@@ -6,24 +6,13 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "hardhat/console.sol";
 
+import "./Common.sol";
 import "./NFT.sol";
 
-contract TheCryptoPurgeGame is ERC721 {
+contract TheCryptoPurgeGame is ERC721, CommonData {
   uint256 numberOfRounds;
-
-  struct Character {
-    uint index;
-    uint health;
-    uint maxHealth;
-    uint attack;
-    string name;
-    string imageUri;
-  }
-
   Character[] characters;
   TheCryptoPurgeNFT nft;
-  // NFTs minted by this contract
-  mapping(uint256 => Character) public characterNFTs;
 
   constructor(
     TheCryptoPurgeNFT _nft,
@@ -40,7 +29,7 @@ contract TheCryptoPurgeGame is ERC721 {
         index: i,
         health: characterHealths[i],
         maxHealth: characterHealths[i],
-        attack: characterAttacks[i],
+        attackDamage: characterAttacks[i],
         name: characterNames[i],
         imageUri: characterImages[i]
       });
@@ -74,26 +63,13 @@ contract TheCryptoPurgeGame is ERC721 {
     require(success, "Failed to withdraw money from contract.");
   }
 
-  function mintCharacterNFT(
-    string memory name,
-    string memory imageUri,
-    uint health,
-    uint attack
-  ) public returns (uint256) {
-    // TODO: Save image from IPFS and send the json data to the NFT contract
+  function mintCharacterNFT(uint characterIndex) external {
+    require(
+      characterIndex > 0 && characterIndex < characters.length,
+      "Character index out of bounds."
+    );
+    Character memory character = characters[characterIndex];
     // Create the NFT
-    uint256 tokenId = nft.mintNFT('');
-
-    // Save the NFT in the storage
-    characterNFTs[tokenId] = Character({
-      index: tokenId,
-      health: health,
-      maxHealth: health,
-      attack: attack,
-      name: name,
-      imageUri: imageUri
-    });
-
-    return tokenId;
+    nft.mintNFT(character);
   }
 }

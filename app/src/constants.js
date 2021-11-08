@@ -23,7 +23,17 @@ export const CUSTOM_ERRORS = {
   NO_METAMASK: 'No Metamask detected, please install',
   MULTIPLE_WALLETS: 'Metamask installed, but multiple wallets have been detected',
   NO_CONNECTED: 'Please connect to MetaMask.',
-  UNSUPPORTED_NETWORK: 'Unsupported network'
+  UNSUPPORTED_NETWORK: 'Unsupported network',
+  LUCKY_FAILED: 'Good luck for next time! Try again later.',
 }
 
 export const SUPPORTED_CHAIN_ID = CHAIN_IDS.RINKEBY
+// ⛽️ Setting gas limit
+export const GAS_LIMIT = 300000
+
+/**
+ * Holds the contract addresses after deploy!
+ */
+export const CONTRACTS = {
+  PORTAL: '0x04517F6Ac6a4D245742E27a5a0A87547260a2455'
+}

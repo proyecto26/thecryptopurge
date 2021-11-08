@@ -33,7 +33,7 @@ const MessageContainer = ({ account, messages, sendMessage }) => {
             <div
               className={`bg-gray-300 w-3/4 mx-4 my-2 p-2 rounded-lg ${ from === account ? 'bg-green-300' : '' }`}
             >{message}</div>
-            <div className="mx-4"><small class="text-gray-500">{date}</small></div>
+            <div className="mx-4"><small className="text-gray-500">{date}</small></div>
           </div>
         ))}
       </div>

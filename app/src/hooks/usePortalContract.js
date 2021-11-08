@@ -2,13 +2,15 @@ import { useRef, useState, useEffect, useCallback } from 'react'
 import { ethers } from 'ethers'
 
 import portalContract from '../abis/Portal.json'
-import { CUSTOM_ERRORS } from '../constants'
+import { CUSTOM_ERRORS, CONTRACTS, GAS_LIMIT } from '../constants'
 
-/**
- * TODO: Remove this variable here that holds the contract address after you deploy!
- */
-const contractAddress = '0x05c0eb7365fF030d2C19F5986aD1Bdb35850AddB'
 const contractABI = portalContract.abi
+
+export const formatMessage = ({ user, message, timestamp }) => ({
+  from: user.toLowerCase(),
+  message: message,
+  timestamp: new Date(timestamp * 1000),
+});
 
 export function usePortalContract () {
   const contractRef = useRef()
@@ -17,19 +19,18 @@ export function usePortalContract () {
   const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(false)
 
+  const setLoadingTransaction = useCallback(() => {
+    setError(null)
+    setLoading(true)
+  }, [setError, setLoading])
+
   const loadData = useCallback(async () => {
     try {
       const contract = contractRef.current
       const count = await contract.getTotalLikes()
       setLikes(count.toNumber())
       const messages = await contract.getAllMessages()
-      if (messages) {
-        setMessages(messages.map(m => ({
-          from: m.user.toLowerCase(),
-          message: m.message,
-          timestamp: new Date(m.timestamp * 1000),
-        })))
-      }
+      setMessages(messages.map(m => formatMessage(m)))
     } catch (err) {
       setError(err)
     }
@@ -46,16 +47,35 @@ export function usePortalContract () {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     // https://docs.ethers.io/v5/api/signer/#signers
     const signer = provider.getSigner()
-    const contract = new ethers.Contract(contractAddress, contractABI, signer)
+    const contract = new ethers.Contract(CONTRACTS.PORTAL, contractABI, signer)
     contractRef.current = contract
+
+    /**
+     * Listen in for emitter events!
+     */
+    contract.on('WinPrize', (owner, prizeAmount) => {
+      console.log('WinPrize', owner, prizeAmount)
+      alert(`Congratulations! You won ${ethers.utils.formatEther(prizeAmount)} ETH!`)
+    })
+    contract.on('NewMessage', (user, timestamp, message) => {
+      setMessages(prevState => [
+        ...prevState,
+        formatMessage({ user, message, timestamp }),
+      ]);
+    })
+
     loadData().finally(() => setLoading(false))
+
+    return () => {
+      contract.removeAllListeners()
+    }
   }, [loadData])
 
   const onLike = useCallback(async () => {
-    setLoading(true)
+    setLoadingTransaction()
     try {
       const contract = contractRef.current
-      const tx = await contract.like()
+      const tx = await contract.like({ gasLimit: GAS_LIMIT })
       await tx.wait()
       await loadData()
     } catch (err) {
@@ -63,25 +83,39 @@ export function usePortalContract () {
     } finally {
       setLoading(false)
     }
-  }, [loadData])
+  }, [setLoadingTransaction, setError, setLoading, loadData])
 
   const onSendMessage = useCallback(async (message) => {
     if (!message) {
       throw new Error('Message is required')
     }
-    setLoading(true)
+    setLoadingTransaction(true)
     try {
       const contract = contractRef.current
-      const tx = await contract.sendMessage(message)
+      // set a limit of gas for the transaction
+      const tx = await contract.sendMessage(message, { gasLimit: GAS_LIMIT })
       await tx.wait()
       await loadData()
     } catch (err) {
       setError(err)
-      throw err
     } finally {
       setLoading(false)
     }
-  }, [loadData])
+  }, [setLoadingTransaction, setError, setLoading, loadData])
+
+  const onFeelingLucky = useCallback(async () => {
+    setLoadingTransaction(true)
+
+    try {
+      const contract = contractRef.current
+      const tx = await contract.feelingLucky({ gasLimit: GAS_LIMIT })
+      await tx.wait()
+    } catch {
+      setError(new Error(CUSTOM_ERRORS.LUCKY_FAILED))
+    } finally {
+      setLoading(false)
+    }
+  }, [setLoadingTransaction, setError, setLoading])
 
   return {
     error,
@@ -90,5 +124,6 @@ export function usePortalContract () {
     messages,
     onLike,
     onSendMessage,
+    onFeelingLucky
   }
 }
