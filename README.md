@@ -35,6 +35,14 @@ We learned about `Blockchain`, `Smart Contracts`, `2D Games` with `WebGL/Canvas`
 - Define a `System Design` for Cloud platforms like **AWS** that can scale easily.
 - Apply to **Y Combinator** to get funding.
 - Migrate the back-end to use a microservices architecture and use a language like **Go** with better benchmarks in terms of scalability as required by the system.
+- Allow users to have an inventory.
+- Allow users to take inventory of dead users.
+- Allow players to edit their profile.
+- Allow players to select their gender (female, male).
+- Allow players to mint weapons.
+- Open Marketplace to buy or mint their own skins.
+- Ranking for rounds.
+- Support Internationalization and localization (i18n).
 
 ## Intructions to run the projects
 - **Client side:**
