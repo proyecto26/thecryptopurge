@@ -8,7 +8,7 @@ The most revolutionary crypto shooter-survival real-time NFT-based game on **Bin
 > The system controls the prize pool redistribution between winners of each game. The game runs on **WebGL** with a real-time connection using WebSockets and a Server side shooting authority connected to web3.js API to send transactions to smart contracts and back.
 
 ## Inspiration
-`The Crypto Purge` is a real-time game based on [The Purge (an American dystopian action horror film)](https://en.wikipedia.org/wiki/The_Purge).
+`The Crypto Purge` is a crypto shooter-survival real-time NFT-based game inspired by [The Purge (an American dystopian action horror film)](https://en.wikipedia.org/wiki/The_Purge).
 
 ## What it does
 Players will have multiple modes to play the game, `single` and `multiplayer`. **Single mode** includes killing zombies and social ranking with friends for earn prizes, the top scorers on the `leaderboard` will split the prize pool grant. 
