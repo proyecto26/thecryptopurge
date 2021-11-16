@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
+// NFT contract to inherit from.
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+// Helper functions OpenZeppelin provides.
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "hardhat/console.sol";
 
 import "./libraries/Base64.sol";
 import "./models/Game.sol";
 
+// Our contract inherits from ERC721, which is the standard NFT contract.
 contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
   string constant description = 'This is a NFT that lets people play "The Crypto Purge" game with their own unique skins';
   mapping(address => uint256) public holders;
@@ -69,10 +72,10 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
   }
 
   function mintNFT(Character memory character) public returns (uint256) {
-    // Get token id
+    // Get current tokenId.
     uint256 tokenId = _tokenIds.current();
     
-    // Mint NFT
+    // Assigns the tokenId to the caller's wallet address.
     _safeMint(msg.sender, tokenId);
 
     // Set the NFT's data
