@@ -1,15 +1,11 @@
 const { expect } = require('chai');
-const { ethers } = require('hardhat');
+
+const { deployNFTContract } = require('../scripts/nft-contract');
 
 describe('TheCryptoPurgeNFT', function () {
-  it(`Should return a new total once NFT is minted`, async function () {
-
-    // Compiling our Smart Contract.
-    const contractFactory = await ethers.getContractFactory('TheCryptoPurgeNFT');
-    // Deploy our contract to the local blockchain.
-    const contract = await contractFactory.deploy();
-    // Await for the contract to be mined.
-    await contract.deployed();
+  it(`should return a new total once NFT is minted`, async function () {
+    // Compiling our Smart Contract and Deploy our contract to the local blockchain.
+    const contract = await deployNFTContract();
 
     expect(await contract.getTotalCollection()).to.equal(0);
 

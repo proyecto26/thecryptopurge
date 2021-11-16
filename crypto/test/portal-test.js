@@ -1,22 +1,7 @@
 const { expect } = require('chai');
-const { ethers } = require('hardhat');
 
 const { getAccountBalance, getContractBalance } = require('../scripts/utils');
-
-const deployContract = async (initialValue) => {
-  // Compiling our Smart Contract.
-  const contractFactory = await ethers.getContractFactory('TheCryptoPurgePortal');
-  
-  // Deploy our contract to the local blockchain.
-  // Fund the contract so we can send ETH!
-  const contract = await contractFactory.deploy({
-    value: initialValue
-  });
-  // Await for the contract to be mined.
-  await contract.deployed();
-  console.log('Contract deployed to:', contract.address);
-  return contract;
-};
+const { deployPortalContract, initialValue } = require('../scripts/portal-contract');
 
 const sendMessage = async (contract, message) => {
   const transaction = await contract.sendMessage(message);
@@ -37,11 +22,10 @@ const feelingLucky = async (contract) => {
 };
 
 describe('TheCryptoPurgePortal', function () {
-  const initialValue = ethers.utils.parseEther('0.01');
 
   it('should send a message correctly', async function () {
     // Deploy and get contract balance
-    const contract = await deployContract(initialValue);
+    const contract = await deployPortalContract();
     expect((await contract.getAllMessages()).length).to.equal(0);
 
     // Send a message with a random wallet address
@@ -53,11 +37,11 @@ describe('TheCryptoPurgePortal', function () {
     expect((await contract.getAllMessages()).length).to.equal(1);
   });
 
-  it('Should return a new total of likes', async function () {
+  it('should return a new total of likes', async function () {
     const [owner, randomWallet] = await hre.ethers.getSigners();
 
     // Deploy and get contract balance
-    const contract = await deployContract(initialValue);  
+    const contract = await deployPortalContract();  
     console.log('Contract deployed by:', owner.address);
 
     // Get total likes
@@ -75,7 +59,7 @@ describe('TheCryptoPurgePortal', function () {
   });
 
 
-  it('Should return a new balance equal or less than the initial', async function () {
+  it('should return a new balance equal or less than the initial', async function () {
     // https://hardhat.org/advanced/hardhat-runtime-environment.html
     const [owner] = await hre.ethers.getSigners();
 
@@ -83,7 +67,7 @@ describe('TheCryptoPurgePortal', function () {
     console.log('Account balance:', await getAccountBalance(owner));
 
     // Deploy and get contract balance
-    const contract = await deployContract(initialValue);  
+    const contract = await deployPortalContract();  
     console.log('Contract deployed by:', owner.address);
     // Get Contract balance
     console.log('Contract balance:', await getContractBalance(contract.address));

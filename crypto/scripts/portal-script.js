@@ -1,20 +1,5 @@
-const { ethers } = require('hardhat');
 const { getAccountBalance, getContractBalance } = require('./utils');
-
-const deployContract = async () => {
-  // Compiling our Smart Contract.
-  const contractFactory = await ethers.getContractFactory('TheCryptoPurgePortal');
-  
-  // Deploy our contract to the local blockchain.
-  // Fund the contract so we can send ETH!
-  const contract = await contractFactory.deploy({
-    value: ethers.utils.parseEther('0.01')
-  });
-  // Await for the contract to be mined.
-  await contract.deployed();
-  console.log('Contract deployed to:', contract.address);
-  return contract;
-};
+const { deployPortalContract } = require('./scripts/portal-contract');
 
 /**
  * Creating a new local Ethereum network.
@@ -22,14 +7,19 @@ const deployContract = async () => {
  * Hardhat will automatically destroy that local network by default.
  */
 const main = async () => {
-  // https://hardhat.org/advanced/hardhat-runtime-environment.html
+  /**
+   * The Hardhat Runtime Environment, or HRE for short,
+   * is an object containing all the functionality that Hardhat exposes when running a task,
+   * test or script. In reality, Hardhat is the HRE.
+   * More details here: https://hardhat.org/advanced/hardhat-runtime-environment.html
+   */
   const [owner] = await hre.ethers.getSigners();
 
   // Get Owner balance
   console.log('Account balance:', await getAccountBalance(owner));
 
   // Deploy and get contract balance
-  const contract = await deployContract();  
+  const contract = await deployPortalContract();  
   console.log('Contract deployed by:', owner.address);
   // Get Contract balance
   console.log('Contract balance:', await getContractBalance(contract.address));

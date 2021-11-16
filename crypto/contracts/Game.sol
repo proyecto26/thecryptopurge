@@ -21,6 +21,7 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
     uint[] memory characterHealths,
     uint[] memory characterAttacks
   ) payable ERC721("TheCryptoPurge", "ePING") {
+    console.log("TheCryptoPurgeGame initializing...");
     // Save the NFT contract
     nft = _nft;
     // Initialize the game with default characters
@@ -34,8 +35,13 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
         imageUri: characterImages[i]
       });
       characters.push(character);
+      console.log("Done initializing %s w/ HP %s, img %s", character.name, character.health, character.imageUri);
     }
     console.log("Game initialized :)");
+  }
+
+  function getCharacters() public view returns (Character[] memory) {
+    return characters;
   }
 
   function play() public {
