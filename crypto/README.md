@@ -52,7 +52,7 @@ We can grab some fake `ETH` for `Rinkeby` through a `faucet`:
 ## FAQ
 
 - **Private key**: used as a password in order to perform a transaction, like deploying a contract to the blockchain.
-- **Transactions**: perform an action on the Ethereum blockchain. e.g: sending ETH to someone, updating a variable in our contracts, also deploying a smart contract.
+- **Transactions**: perform an action that changes the blockchain. e.g: **sending ETH to someone** because we're changing account balances, **updating a variable** in our contracts because we're changing data, **Minting an NFT** because we're saving data on the contract, also **deploying a smart contract** because we need to tell miners to add our new contract to the blockchain.
 - **Block difficulty**: tells miners how hard the block will be to mine based on the transactions in the block. Blocks get harder for a # of reasons, but, mainly they get harder when there are more transactions in the block.
 - **Block timestamp**: an Unix timestamp that the block is being processed.
 - **Alchemy**: help broadcast the contract creation transaction to be mined as quickly as possible.
