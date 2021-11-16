@@ -4,7 +4,7 @@ const { deployGameContract } = require('./game-contract');
 
 const main = async () => {
   const nftContract = await deployNFTContract();
-  await deployGameContract(nftContract);
+  const contract = await deployGameContract(nftContract);
   await getContractBalance(contract.address);
 };
 
