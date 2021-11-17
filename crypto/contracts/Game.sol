@@ -71,13 +71,17 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
     require(success, "Failed to withdraw money from contract.");
   }
 
-  function mintCharacterNFT(uint characterIndex) external {
+  function mintCharacterNFT(uint characterIndex) external returns (uint256) {
     require(
-      characterIndex > 0 && characterIndex < characters.length,
+      characterIndex >= 0 && characterIndex < characters.length,
       "Character index out of bounds."
     );
     Character memory character = characters[characterIndex];
     // Create the NFT
-    nft.mintNFT(character);
+    return nft.mintNFT(character);
+  }
+
+  function getTotalNFTMinted() public view returns (uint256) {
+    return nft.getTotalCollection();
   }
 }

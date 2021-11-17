@@ -72,11 +72,12 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
   }
 
   function mintNFT(Character memory character) public returns (uint256) {
+    address owner = tx.origin;
     // Get current tokenId.
     uint256 tokenId = _tokenIds.current();
     
     // Assigns the tokenId to the caller's wallet address.
-    _safeMint(msg.sender, tokenId);
+    _safeMint(owner, tokenId);
 
     // Set the NFT's data
     //_setTokenURI(tokenId, jsonData);
@@ -92,12 +93,12 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
     });
 
     // Save NFT owner
-    holders[msg.sender] = tokenId;
+    holders[owner] = tokenId;
 
     // Increment counter
     _tokenIds.increment();
 
-    console.log("NFT minted, tokenId: %s", tokenId);
+    console.log("NFT minted by %s, tokenId: %s", owner, tokenId);
     return tokenId;
   }
 }
