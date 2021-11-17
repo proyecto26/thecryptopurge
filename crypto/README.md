@@ -29,7 +29,8 @@ npx hardhat help
   - V3 Feeling lucky: https://rinkeby.etherscan.io/address/0x04517F6Ac6a4D245742E27a5a0A87547260a2455
 - **Game script**:
   - V1 Founds: https://rinkeby.etherscan.io/address/0xCaaAdB609709B92457cC8a72568c55ae93bDB26B
-  - V2 NFTs: [TheCryptoPurgeNFT contract](https://rinkeby.etherscan.io/address/0x0AdC46DD42aD35c770e5F06B7c9042e11dFFA5D7) & [TheCryptoPurgeGame contract](https://rinkeby.etherscan.io/address/0x4dc3d802Efe4DE87A707Bc117f65d6D6DD2d0368)
+  - V2 NFTs: [TheCryptoPurgeNFT contract](https://rinkeby.etherscan.io/address/0x88793FBDA711A63C0317E63d1e5ee0ff11DE72B2) & [TheCryptoPurgeGame contract](https://rinkeby.etherscan.io/address/0x81B6c8780FdfdDF65C545e1f74ce352379eBd36c)
+  - Open Sea Collection: https://testnets.opensea.io/collection/thecryptopurgecollection-srx6anrg7z
 
 ## Faucet
 

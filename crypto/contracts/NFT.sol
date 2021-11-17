@@ -12,7 +12,7 @@ import "./models/Game.sol";
 
 // Our contract inherits from ERC721, which is the standard NFT contract.
 contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
-  string constant description = 'This is a NFT that lets people play "The Crypto Purge" game with their own unique skins';
+  string constant description = "This is a NFT that lets people play The Crypto Purge game with their own unique skins";
   mapping(address => uint256) public holders;
   // NFTs minted by this contract
   mapping(uint256 => Character) public characterNFTs;
@@ -51,12 +51,12 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
       bytes(string(
         abi.encodePacked(
           '{',
-            '"name": "', character.name, ' -- NFT #: ', nftId, '", ',
-            '"description": "', description, '", ',
-            '"image": "', character.imageUri, '", ',
+            '"name": "', character.name, ' -- NFT #: ', nftId, '",',
+            '"description": "', description, '",',
+            '"image": "', character.imageUri, '",',
             '"attributes": [',
-              '{ "trait_type": "Health Points", "value": "', hp, '", "max_value": "', maxHp, '" }, ',
-              '{ "trait_type": "Attack Damage", "value": "', attackDamage, '" } ',
+              '{ "trait_type": "Health Points", "value": "', hp, '", "max_value": "', maxHp, '" },',
+              '{ "trait_type": "Attack Damage", "value": "', attackDamage, '" }',
             ']',
           '}'
         )
@@ -75,22 +75,15 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
     address owner = tx.origin;
     // Get current tokenId.
     uint256 tokenId = _tokenIds.current();
-    
+
+    // Save the NFT in the storage
+    characterNFTs[tokenId] = character;
+
     // Assigns the tokenId to the caller's wallet address.
     _safeMint(owner, tokenId);
 
     // Set the NFT's data
     //_setTokenURI(tokenId, jsonData);
-
-    // Save the NFT in the storage
-    characterNFTs[tokenId] = Character({
-      index: character.index,
-      name: character.name,
-      imageUri: character.imageUri,
-      health: character.health,
-      maxHealth: character.maxHealth,
-      attackDamage: character.attackDamage
-    });
 
     // Save NFT owner
     holders[owner] = tokenId;
