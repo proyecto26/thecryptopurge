@@ -8,6 +8,9 @@ const main = async () => {
   const balance = await getContractBalance(contract.address);
   console.log('Contract balance:', balance);
 
+  const [owner] = await hre.ethers.getSigners();
+  console.log('Owner address:', owner.address);
+
   const countCharacters = Object.keys(characters).length;
   // Mint NFTs for characters.
   for (let i = 0; i < countCharacters; i++) {
