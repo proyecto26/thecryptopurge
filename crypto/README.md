@@ -30,7 +30,7 @@ npx hardhat help
 - **Game script**:
   - V1 Founds: https://rinkeby.etherscan.io/address/0xCaaAdB609709B92457cC8a72568c55ae93bDB26B
   - V2 NFTs: [TheCryptoPurgeNFT contract](https://rinkeby.etherscan.io/address/0x88793FBDA711A63C0317E63d1e5ee0ff11DE72B2) & [TheCryptoPurgeGame contract](https://rinkeby.etherscan.io/address/0x81B6c8780FdfdDF65C545e1f74ce352379eBd36c)
-  - Open Sea Collection: https://testnets.opensea.io/collection/thecryptopurgecollection-srx6anrg7z
+  - OpenSea Collection: https://testnets.opensea.io/collection/thecryptopurgecollection-srx6anrg7z
 
 ## Faucet
 
