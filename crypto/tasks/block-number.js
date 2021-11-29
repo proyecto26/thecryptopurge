@@ -1,5 +1,3 @@
-
-   
 task(
   "block-number",
   "Prints the current block number",
