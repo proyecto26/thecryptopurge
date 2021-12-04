@@ -15,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@appliedblockchain/chainlink-contracts": "^0.0.4",
+    "@appliedblockchain/chainlink-plugins-fund-link": "^0.0.3",
     "@appliedblockchain/chainlink-plugins-random-number-consumer": "^0.0.4",
     "@chainlink/contracts": "^0.2.2",
     "@chainlink/test-helpers": "0.0.5",
