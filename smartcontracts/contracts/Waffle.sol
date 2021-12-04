@@ -4,7 +4,7 @@ pragma solidity ^0.8.4;
 // ============ Imports ============
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@chainlink/contracts/src/v0.8/dev/VRFConsumerBase.sol";
+import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract Waffle is VRFConsumerBase, IERC721Receiver {

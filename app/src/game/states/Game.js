@@ -39,13 +39,13 @@ class GameState extends Phaser.State {
       game: this.game,
       x: this.world.centerX,
       y: this.world.centerY - 50,
-      text: 'The Crypto Purge 💸 \nfor                     '
+      text: 'The Crypto Purge 💸 \n                        '
     })
     this.game.add.existing(this.banner)
     // this.logo = this.add.image(this.banner.x - 8, this.banner.y - 10, 'sonar')
     // this.logo.scale.setTo(0.28)
-    this.logo = this.add.image(this.banner.x - 80, this.banner.y + 0, 'sonar-logo')
-    this.logo.scale.setTo(0.055)
+    // this.logo = this.add.image(this.banner.x - 80, this.banner.y + 0, 'sonar-logo')
+    // this.logo.scale.setTo(0.055)
 
     // this.ring = this.add.image(this.world.centerX - 3, this.world.centerY + 170, 'sonar-logo-ring')
     // this.ring.scale.setTo(0.8)
