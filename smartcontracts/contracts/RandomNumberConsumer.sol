@@ -10,14 +10,11 @@ contract RandomNumberConsumer is VRFConsumerBase, Ownable {
     uint256 internal fee;
     uint256 public randomResult;
     event RequestedRandomness(bytes32 requestId);
+    event EmitRandom(uint256 randomResult);
 
     /**
      * Constructor inherits VRFConsumerBase
      *
-     * Network: Kovan
-     * Chainlink VRF Coordinator address: 0xdD3782915140c8f3b190B5D67eAc6dc5760C46E9
-     * LINK token address:                0xa36085F69e2889c224210F603D836748e7dC0088
-     * Key Hash: 0x6c3699283bda56ad74f6b855546325b68d482e983852a7a82979cc4807b641f4
      */
     constructor(
         address _vrfCoordinator,
@@ -31,15 +28,18 @@ contract RandomNumberConsumer is VRFConsumerBase, Ownable {
         )
     {
         keyHash = _keyHash;
-        fee = _fee;
+        fee = _fee; // 0.1 * 10 ** 18 === 0.1 LINK (Varies by network)
     }
 
     /**
      * Requests randomness
      */
     function getRandomNumber() public returns (bytes32 requestId) {
+        require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK - fill contract first");
+
         requestId = requestRandomness(keyHash, fee);
         emit RequestedRandomness(requestId);
+        return requestId;
     }
 
     /**
@@ -51,6 +51,9 @@ contract RandomNumberConsumer is VRFConsumerBase, Ownable {
     {
         console.log("Created random %s for request %s", randomness, string(abi.encodePacked(requestId)));
         randomResult = randomness;
+        // get a random number in a range from 1 to 50
+        // randomResult = (randomness % 50) + 1;
+        emit EmitRandom(randomResult);
     }
 
     /**

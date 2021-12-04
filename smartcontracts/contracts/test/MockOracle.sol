@@ -3,7 +3,7 @@ pragma solidity ^0.8.4;
 
 import "@chainlink/contracts/src/v0.8/interfaces/ChainlinkRequestInterface.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol";
-import "./LinkToken.sol";
+import "./LinkTokenReceiver.sol";
 import "./SafeMathChainlink.sol";
 
 /**
