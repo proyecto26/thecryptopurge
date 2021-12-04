@@ -55,7 +55,7 @@ yarn start
 cd server
 yarn start
 ```
-- **Smart Contracts:**
+- **Blockchain:**
 ```
 cd smartcontracts
 yarn start

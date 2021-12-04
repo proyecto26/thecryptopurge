@@ -1,7 +1,9 @@
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-ethers');
 require("@nomiclabs/hardhat-etherscan");
+require("@nomiclabs/hardhat-web3");
 require('@appliedblockchain/chainlink-plugins-random-number-consumer');
+require("@appliedblockchain/chainlink-plugins-fund-link");
 require('hardhat-deploy');
 require('solidity-coverage');
 
