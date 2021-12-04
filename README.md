@@ -45,24 +45,24 @@ We learned about `Blockchain`, `Smart Contracts`, `Chainlink Oracles`, `2D Games
 - Support Internationalization and localization (i18n).
 
 ## Intructions to run the projects
-- **Client side:**
+- **FrontEnd:**
 ```
 cd app
 yarn start
 ```
-- **Server side:**
+- **BackEnd:**
 ```
 cd server
 yarn start
 ```
-- **Crypto side:**
+- **Smart Contracts:**
 ```
-cd crypto
-npx hardhat compile
-npx hardhat test
-npx hardhat run scripts/nft-script.js
-npx hardhat node
-npx hardhat run scripts/portal-script.js --network localhost
+cd smartcontracts
+yarn start
+yarn start:portal
+yarn test
+yarn deploy
+yarn deploy:portal
 ```
 
 ## Contributing ✨
