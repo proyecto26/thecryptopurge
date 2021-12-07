@@ -10,4 +10,12 @@ contract GameModel {
     string name;
     string imageUri;
   }
+
+  struct BigBoss {
+    string name;
+    string imageUri;
+    uint health;
+    uint maxHealth;
+    uint attackDamage;
+  }
 }

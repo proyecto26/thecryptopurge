@@ -48,7 +48,7 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
 
   function play() public {
     numberOfRounds += 1;
-    console.log("%s has started a new round, number of rounds: %s", msg.sender, numberOfRounds);
+    console.log("%s has started a new purge, number of purges: %s", msg.sender, numberOfRounds);
   }
 
   function getNumberOfRounds() public view returns (uint256) {
@@ -56,7 +56,7 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
   }
 
   function finish() public {
-    console.log("Round finished");
+    console.log("Purge finished");
 
     // Send ETH to winners
     uint256 prizeAmount = 0.0001 ether;
