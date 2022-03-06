@@ -50,4 +50,30 @@ contract TheCryptoPurgeSingleModeGame is GameModel {
   function getTotalNFTMinted() public view returns (uint256) {
     return game.getTotalNFTMinted();
   }
+
+  function attackBoss () public {
+    // Retrieve player's character NFT state to be modified.
+    Character memory player = game.getNFTByAddress(msg.sender);
+    console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.health, player.attackDamage);
+    console.log("Boss %s has %s HP and %s AD", bigBoss.name, bigBoss.health, bigBoss.attackDamage);
+    
+    // Make sure the player has more than 0 HP.
+    require (
+      player.health > 0,
+      "Error: character must have HP to attack boss."
+    );
+
+    // Make sure the boss has more than 0 HP.
+    require (
+      bigBoss.health > 0,
+      "Error: boss must have HP to attack boss."
+    );
+
+    // Allow player to attack boss and prevent negative HP.
+    if (bigBoss.health < player.attackDamage) {
+      bigBoss.health = 0;
+    } else {
+      bigBoss.health = bigBoss.health - player.attackDamage;
+    }
+  }
 }

@@ -94,4 +94,9 @@ contract TheCryptoPurgeNFT is ERC721URIStorage, GameModel {
     console.log("NFT minted by %s, tokenId: %s", owner, tokenId);
     return tokenId;
   }
+
+  function getByAddress(address _owner) public view returns (Character memory) {
+    uint256 tokenId = holders[_owner];
+    return characterNFTs[tokenId];
+  }
 }

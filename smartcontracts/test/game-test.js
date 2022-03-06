@@ -1,8 +1,9 @@
 const { expect } = require('chai');
 
+const { CHARACTERS } = require('../scripts/constants');
 const { getContractBalance } = require('../scripts/utils');
 const { deployNFTContract } = require('../scripts/nft-contract');
-const { deployGameContract, characters } = require('../scripts/game-contract');
+const { deployGameContract } = require('../scripts/game-contract');
 
 const playGame = async (contract) => {
   // Play a game.
@@ -18,9 +19,9 @@ describe('TheCryptoPurgeGame', function () {
     const contract = await deployGameContract(nftContract);
     const defaultCharacters = await contract.getCharacters();
 
-    expect(defaultCharacters.length).to.equal(Object.keys(characters).length);
+    expect(defaultCharacters.length).to.equal(Object.keys(CHARACTERS).length);
 
-    expect(defaultCharacters[0].name).to.equal(characters.player.name);
+    expect(defaultCharacters[0].name).to.equal(CHARACTERS.player.name);
   });
 
   it('should increment number of rounds after a game is played', async function () {

@@ -4,21 +4,21 @@ const { getAccountBalance, getContractBalance } = require('../scripts/utils');
 const { deployPortalContract, initialValue } = require('../scripts/portal-contract');
 
 const sendMessage = async (contract, message) => {
-  const transaction = await contract.sendMessage(message);
+  const sendMessageTx = await contract.sendMessage(message);
   // Wait for the transaction to be mined.
-  await transaction.wait();
+  await sendMessageTx.wait();
 };
 
 const sendLike = async (contract) => {
-  const transaction = await contract.like();
+  const likeTx = await contract.like();
   // Wait for the transaction to be mined.
-  await transaction.wait();
+  await likeTx.wait();
 };
 
 const feelingLucky = async (contract) => {
-  const transaction = await contract.feelingLucky();
+  const feelingLuckyTx = await contract.feelingLucky();
   // Wait for the transaction to be mined.
-  await transaction.wait();
+  await feelingLuckyTx.wait();
 };
 
 describe('TheCryptoPurgePortal', function () {

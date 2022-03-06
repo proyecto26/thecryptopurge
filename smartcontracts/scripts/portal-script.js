@@ -30,9 +30,9 @@ const main = async () => {
 
   // Feeling lucky
   console.log('Feeling lucky...');
-  const transaction = await contract.feelingLucky();
+  const feelingLuckyTx = await contract.feelingLucky();
   // Wait for the transaction to be mined.
-  await transaction.wait();
+  await feelingLuckyTx.wait();
 
   // Get Contract balance
   console.log('Contract balance:', await getContractBalance(contract.address));

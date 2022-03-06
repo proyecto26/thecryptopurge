@@ -84,4 +84,8 @@ contract TheCryptoPurgeGame is ERC721, GameModel {
   function getTotalNFTMinted() public view returns (uint256) {
     return nft.getTotalCollection();
   }
+
+  function getNFTByAddress(address _owner) public view returns (Character memory) {
+    return nft.getByAddress(_owner);
+  }
 }

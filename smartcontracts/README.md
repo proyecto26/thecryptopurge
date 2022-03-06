@@ -57,10 +57,11 @@ We can grab some fake `ETH` for `Rinkeby` through a `faucet`:
 - **Transactions**: perform an action that changes the blockchain. e.g: **sending ETH to someone** because we're changing account balances, **updating a variable** in our contracts because we're changing data, **Minting an NFT** because we're saving data on the contract, also **deploying a smart contract** because we need to tell miners to add our new contract to the blockchain.
 - **Block difficulty**: tells miners how hard the block will be to mine based on the transactions in the block. Blocks get harder for a # of reasons, but, mainly they get harder when there are more transactions in the block.
 - **Block timestamp**: an Unix timestamp that the block is being processed.
-- **Alchemy**: help broadcast the contract creation transaction to be mined as quickly as possible.
+- **Alchemy**: helps broadcast the contract creation `transaction` to be mined as quickly as possible, more details [here](https://www.loom.com/share/21aa1d64ea634c0c9da8fc5faaf24283?t=0).
 - **Testnets**: a clone of **mainnet** but it uses fake money (ether, etc) for testing in a real-world scenario.
 - **Rinkeby**: a **testnet** network which is run by the Ethereum foundation.
 - **Etherscan**: a place that just shows us the state of the blockchain and helps us see where our transaction is at.
 - **ABI**: the standard way to interact with contracts in the Ethereum ecosystem. Read about it [here](https://docs.soliditylang.org/en/v0.5.3/abi-spec.html).
+  - `abi.encodePacked`: combines strings encoding its parameters using the minimal space required by the type.
 - **Gas**: a cost needed to notify the miners so that the transaction can be mined. Read about it [here](https://ethereum.org/en/developers/docs/gas/).
 - **ethers**: a library that helps our frontend talk to our contract.

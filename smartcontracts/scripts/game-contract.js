@@ -1,35 +1,15 @@
 const { ethers } = require('hardhat');
-
-const CHARACTERS = {
-  player: {
-    name: 'Player',
-    imageUrl: 'https://proyecto26.com/thecryptopurge/assets/images/player.png',
-    health: 1000,
-    attack: 25,
-  },
-  enemy1: {
-    name: 'Enemy 1',
-    imageUrl: 'https://proyecto26.com/thecryptopurge/assets/images/zombie.png',
-    health: 100,
-    attack: 10,
-  }
-};
-const BIG_BOSS = {
-  name: 'Big Boss',
-  imageUrl: 'https://proyecto26.com/thecryptopurge/assets/images/zombie.png',
-  health: 10000,
-  attack: 20
-};
+const { CHARACTERS, BIG_BOSS } = require('./constants');
 
 // Singleton instance of the contract
-let contract;
+let multiPlayerContract;
 const deployGameContract = async (nftContract) => {
-  if (contract) return contract;
+  if (multiPlayerContract) return multiPlayerContract;
   const contractName = 'TheCryptoPurgeGame';
   // Compiling our Smart Contract.
   const contractFactory = await ethers.getContractFactory(contractName);
   // Deploy our contract to the local blockchain.
-  contract = await contractFactory.deploy(
+  multiPlayerContract = await contractFactory.deploy(
     nftContract.address,
     [CHARACTERS.player.name, CHARACTERS.enemy1.name],
     [CHARACTERS.player.imageUrl, CHARACTERS.enemy1.imageUrl],
@@ -39,32 +19,35 @@ const deployGameContract = async (nftContract) => {
     value: ethers.utils.parseEther('0.001')
   });
   // Await for the contract to be mined.
-  await contract.deployed();
+  await multiPlayerContract.deployed();
 
-  console.log(`Contract ${contractName} deployed:`, contract.address);
+  console.log(`Contract ${contractName} deployed:`, multiPlayerContract.address);
 
-  return contract;
+  return multiPlayerContract;
 };
 
-exports.characters = CHARACTERS;
-exports.deployGameContract = deployGameContract;
-exports.deploySingleModeGameContract = async (nftContract) => {
+let singlePlayerContract;
+const deploySingleModeGameContract = async (nftContract, bigBoss = BIG_BOSS) => {
+  if (singlePlayerContract) return singlePlayerContract;
   const gameContract = await deployGameContract(nftContract);
   const contractName = 'TheCryptoPurgeSingleModeGame';
   // Compiling our Smart Contract.
   const contractFactory = await ethers.getContractFactory(contractName);
   // Deploy our contract to the local blockchain.
-  contract = await contractFactory.deploy(
+  singlePlayerContract = await contractFactory.deploy(
     gameContract.address,
-    BIG_BOSS.name,
-    BIG_BOSS.imageUrl,
-    BIG_BOSS.health,
-    BIG_BOSS.attack,
+    bigBoss.name,
+    bigBoss.imageUrl,
+    bigBoss.health,
+    bigBoss.attack,
   );
   // Await for the contract to be mined.
-  await contract.deployed();
+  await singlePlayerContract.deployed();
 
-  console.log(`Contract ${contractName} deployed:`, contract.address);
+  console.log(`Contract ${contractName} deployed:`, singlePlayerContract.address);
 
-  return contract;
+  return singlePlayerContract;
 };
+
+exports.deployGameContract = deployGameContract;
+exports.deploySingleModeGameContract = deploySingleModeGameContract;

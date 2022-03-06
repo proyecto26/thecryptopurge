@@ -1,6 +1,7 @@
+const { CHARACTERS } = require('./constants');
 const { getContractBalance, getAccountBalance } = require('./utils');
 const { deployNFTContract } = require('./nft-contract');
-const { deployGameContract, characters } = require('./game-contract');
+const { deployGameContract } = require('./game-contract');
 
 const main = async () => {
   const [owner] = await hre.ethers.getSigners();
@@ -12,7 +13,7 @@ const main = async () => {
   console.log('Contract balance:', await getContractBalance(contract.address));
   console.log('Account balance:', await getAccountBalance(owner));
 
-  const countCharacters = Object.keys(characters).length;
+  const countCharacters = Object.keys(CHARACTERS).length;
   // Mint NFTs for characters.
   for (let i = 0; i < countCharacters; i++) {
     // Mint a NFT.

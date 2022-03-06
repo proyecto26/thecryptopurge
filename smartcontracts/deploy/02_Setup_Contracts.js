@@ -1,5 +1,5 @@
-const { networkConfig, autoFundCheck } = require('../helper-hardhat-config')
 const { ethers, getNamedAccounts } = require('hardhat')
+const { networkConfig, autoFundCheck } = require('../helper-hardhat-config')
 
 module.exports = async ({
   getNamedAccounts,
