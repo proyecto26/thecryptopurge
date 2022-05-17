@@ -21,6 +21,10 @@ npx hardhat help
 
 ## Getting Started
 
+### Setup Instructions
+
+Smart Contract Developer [Hardhat Track](https://chain.link/bootcamp/hardhat-setup-instructions).
+
 ### Deployed Contracts:
 
 - **Portal script**:

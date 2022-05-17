@@ -1,9 +1,9 @@
 require('@nomiclabs/hardhat-waffle');
 require('@nomiclabs/hardhat-ethers');
-require("@nomiclabs/hardhat-etherscan");
-require("@nomiclabs/hardhat-web3");
+require('@nomiclabs/hardhat-etherscan');
+require('@nomiclabs/hardhat-web3');
 require('@appliedblockchain/chainlink-plugins-random-number-consumer');
-require("@appliedblockchain/chainlink-plugins-fund-link");
+require('@appliedblockchain/chainlink-plugins-fund-link');
 require('hardhat-deploy');
 require('solidity-coverage');
 
@@ -34,13 +34,13 @@ module.exports = {
   solidity: {
     compilers: [
       {
-        version: "0.4.24"
+        version: '0.4.24'
       },
       {
-        version: "0.6.6"
+        version: '0.6.6'
       },
       {
-        version: "0.8.4"
+        version: '0.8.4'
       }
     ]
   },
