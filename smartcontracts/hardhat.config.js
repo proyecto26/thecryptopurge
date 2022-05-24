@@ -97,7 +97,7 @@ module.exports = {
   },
   contractSizer: {
     runOnCompile: false,
-    only: ["RandomNumberConsumer"],
+    only: ["RandomNumberConsumerV2"],
   },
   namedAccounts: {
     deployer: {
