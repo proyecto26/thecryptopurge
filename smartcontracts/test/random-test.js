@@ -1,31 +1,68 @@
-const { expect } = require('chai')
-const hre = require('hardhat');
-const {deployments} = hre;
+const { assert, expect } = require("chai")
+const { network, deployments, ethers } = require("hardhat")
+const { developmentChains } = require("../../helper-hardhat-config")
 
+!developmentChains.includes(network.name)
+  ? describe.skip
+  : describe("RandomNumberConsumer Unit Tests", async function () {
+      let randomNumberConsumerV2, vrfCoordinatorV2Mock
 
-describe('RandomNumberConsumer', async function () {
-  let randomNumberConsumer, vrfCoordinatorMock
+      beforeEach(async () => {
+        await deployments.fixture(["mocks", "vrf"])
+        vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
+        randomNumberConsumerV2 = await ethers.getContract("RandomNumberConsumerV2")
+      })
 
-  beforeEach(async () => {
-    await deployments.fixture(['mocks', 'vrf'])
+      it("Should successfully request a random number", async () => {
+        await expect(randomNumberConsumerV2.requestRandomWords()).to.emit(
+          vrfCoordinatorV2Mock,
+          "RandomWordsRequested"
+        )
+      })
 
-    const LinkToken = await deployments.get('LinkToken')
-    linkToken = await ethers.getContractAt('LinkToken', LinkToken.address)
-    const RandomNumberConsumer = await deployments.get('RandomNumberConsumer')
-    randomNumberConsumer = await ethers.getContractAt('RandomNumberConsumer', RandomNumberConsumer.address)
-    const VRFCoordinatorMock = await deployments.get('VRFCoordinatorMock')
-    vrfCoordinatorMock = await ethers.getContractAt('VRFCoordinatorMock', VRFCoordinatorMock.address)
-  })
+      it("Should successfully request a random number and get a result", async () => {
+        await randomNumberConsumerV2.requestRandomWords()
+        const requestId = await randomNumberConsumerV2.s_requestId()
 
-  it('Should successfully make an external random number request', async () => {
-    const expected = '777'
-    await linkToken.transfer(randomNumberConsumer.address, '2000000000000000000')
-    const transaction = await randomNumberConsumer.getRandomNumber()
-    const tx_receipt = await transaction.wait()
-    const requestId = tx_receipt.events[2].topics[0]
+        // simulate callback from the oracle network
+        await expect(
+          vrfCoordinatorV2Mock.fulfillRandomWords(requestId, randomNumberConsumerV2.address)
+        ).to.emit(randomNumberConsumerV2, "ReturnedRandomness")
 
-    // Test the result of the random number request
-    await vrfCoordinatorMock.callBackWithRandomness(requestId, expected, randomNumberConsumer.address)
-    expect(await randomNumberConsumer.randomResult()).to.equal(expected)
-  })
-})
+        const firstRandomNumber = await randomNumberConsumerV2.s_randomWords(0)
+        const secondRandomNumber = await randomNumberConsumerV2.s_randomWords(1)
+
+        assert(
+          firstRandomNumber.gt(ethers.constants.Zero),
+          "First random number is greather than zero"
+        )
+
+        assert(
+          secondRandomNumber.gt(ethers.constants.Zero),
+          "Second random number is greather than zero"
+        )
+      })
+
+      it("Should successfully fire event on callback", async function () {
+        await new Promise(async (resolve, reject) => {
+          randomNumberConsumerV2.once("ReturnedRandomness", async () => {
+            console.log("ReturnedRandomness event fired!")
+            const firstRandomNumber = await randomNumberConsumerV2.s_randomWords(0)
+            const secondRandomNumber = await randomNumberConsumerV2.s_randomWords(1)
+            // assert throws an error if it fails, so we need to wrap
+            // it in a try/catch so that the promise returns event
+            // if it fails.
+            try {
+              assert(firstRandomNumber.gt(ethers.constants.Zero))
+              assert(secondRandomNumber.gt(ethers.constants.Zero))
+              resolve()
+            } catch (e) {
+              reject(e)
+            }
+          })
+          await randomNumberConsumerV2.requestRandomWords()
+          const requestId = await randomNumberConsumerV2.s_requestId()
+          vrfCoordinatorV2Mock.fulfillRandomWords(requestId, randomNumberConsumerV2.address)
+        })
+      })
+    })
